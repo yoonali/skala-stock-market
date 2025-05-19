@@ -1,11 +1,11 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: skala052-todo-backend
+  name: sk052-stock-api
   namespace: skala-practice
 spec:
   selector:
-    app: skala052-todo-backend
+    app: sk052-stock-api
   ports:
     - name: http
       protocol: TCP
