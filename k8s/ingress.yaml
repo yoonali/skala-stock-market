@@ -1,0 +1,45 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-prod
+  name: skala052-todo-backend
+  namespace: skala-practice
+spec:
+  ingressClassName: public-nginx
+  rules:
+    - host: springboot.skala25a.project.skala-ai.com
+      http:
+        paths:
+          - backend:
+              service:
+                name: skala052-todo-backend
+                port:
+                  number: 8080
+            path: /todo
+            pathType: Prefix
+          - backend:
+              service:
+                name: skala052-todo-backend
+                port:
+                  number: 8081
+            path: /actuator
+            pathType: Prefix
+          - backend:
+              service:
+                name: skala052-todo-backend
+                port:
+                  number: 8080
+            path: /swagger
+            pathType: Prefix
+          - backend:
+              service:
+                name: skala052-stock-ui
+                port:
+                  number: 8080
+            path: /
+            pathType: Prefix
+  tls:
+    - hosts:
+        - "*.skala25a.project.skala-ai.com"
+      secretName: skala25-project-tls-cert

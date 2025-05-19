@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: skala052-todo-backend
+  namespace: skala-practice
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: skala052-todo-backend
+  template:
+    metadata:
+      annotations:
+        prometheus.io/scrape: 'true'
+        prometheus.io/port: '8081'
+        prometheus.io/path: '/actuator/prometheus'
+        update: 6e49124f3c01505fd23d65fa4bee6115
+      labels:
+        app: skala052-todo-backend
+    spec:
+      serviceAccountName: default
+      containers:
+      - name: todo-backend
+        image: amdp-registry.skala-ai.com/skala25a/skala052-todo-backend:1.0.0
+        imagePullPolicy: Always
+        env:
+        - name: LOGGING_LEVEL
+          value: DEBUG
+        - name: USER_NAME
+          value: skala052
+        - name: NAMESPACE
+          value: skala-practice
