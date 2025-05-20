@@ -69,7 +69,7 @@ public class PlayerController {
 	}
 
 	@Operation(summary = "플레이어 주식 판매", description = "주어진 주문 정보를 기반으로 플레이어 주식을 판매합니다.")
-	@PostMapping("/sell")
+	@PostMapping("/sell_stock")
 	public Response sellPlayerStock(@RequestBody @Parameter(description = "판매할 주식 주문 정보") StockOrder order) {
 		return playerService.sellPlayerStock(order);
 	}
