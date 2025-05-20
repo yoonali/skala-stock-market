@@ -27,7 +27,7 @@ public class PlayerController {
 			@ApiResponse(responseCode = "200", description = "성공적으로 플레이어 목록을 반환"),
 			@ApiResponse(responseCode = "400", description = "잘못된 요청 파라미터")
 	})
-	@GetMapping("/get_all_player_list")
+	@GetMapping("/list")
 	public Response getAllPlayers(
 			@RequestParam(value = "offset", defaultValue = "0") @Parameter(description = "조회 시작 위치") int offset,
 			@RequestParam(value = "count", defaultValue = "10") @Parameter(description = "조회할 개수") int count) {
@@ -63,13 +63,13 @@ public class PlayerController {
 	}
 
 	@Operation(summary = "플레이어 주식 구매", description = "주어진 주문 정보를 기반으로 플레이어 주식을 구매합니다.")
-	@PostMapping("/buy_stock")
+	@PostMapping("/buy")
 	public Response buyPlayerStock(@RequestBody @Parameter(description = "구매할 주식 주문 정보") StockOrder order) {
 		return playerService.buyPlayerStock(order);
 	}
 
 	@Operation(summary = "플레이어 주식 판매", description = "주어진 주문 정보를 기반으로 플레이어 주식을 판매합니다.")
-	@PostMapping("/sell_stock")
+	@PostMapping("/sell")
 	public Response sellPlayerStock(@RequestBody @Parameter(description = "판매할 주식 주문 정보") StockOrder order) {
 		return playerService.sellPlayerStock(order);
 	}
