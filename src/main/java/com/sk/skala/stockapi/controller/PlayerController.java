@@ -27,7 +27,7 @@ public class PlayerController {
 			@ApiResponse(responseCode = "200", description = "성공적으로 플레이어 목록을 반환"),
 			@ApiResponse(responseCode = "400", description = "잘못된 요청 파라미터")
 	})
-	@GetMapping("/list")
+	@GetMapping("/get_all_player_list")
 	public Response getAllPlayers(
 			@RequestParam(value = "offset", defaultValue = "0") @Parameter(description = "조회 시작 위치") int offset,
 			@RequestParam(value = "count", defaultValue = "10") @Parameter(description = "조회할 개수") int count) {
