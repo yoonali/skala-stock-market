@@ -1,16 +1,16 @@
 package com.sk.skala.stockapi.controller;
 
 import org.springframework.web.bind.annotation.*;
-import io.swagger.v3.oas.annotations.Operation;
-import io.swagger.v3.oas.annotations.tags.Tag;
-import io.swagger.v3.oas.annotations.responses.ApiResponse;
-import io.swagger.v3.oas.annotations.responses.ApiResponses;
-import io.swagger.v3.oas.annotations.Parameter;
 
 import com.sk.skala.stockapi.data.common.Response;
 import com.sk.skala.stockapi.data.model.Stock;
 import com.sk.skala.stockapi.service.StockService;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 
 @RestController
@@ -26,7 +26,7 @@ public class StockController {
 			@ApiResponse(responseCode = "200", description = "성공적으로 주식 목록을 반환"),
 			@ApiResponse(responseCode = "400", description = "잘못된 요청 파라미터")
 	})
-	@GetMapping("/list")
+	@GetMapping("/list_all")
 	public Response getAllStocks(
 			@RequestParam(defaultValue = "0") @Parameter(description = "조회 시작 위치") Integer offset,
 			@RequestParam(defaultValue = "10") @Parameter(description = "조회할 개수") Integer count) {
