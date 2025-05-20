@@ -1,17 +1,17 @@
 package com.sk.skala.stockapi.controller;
 
 import org.springframework.web.bind.annotation.*;
-import io.swagger.v3.oas.annotations.Operation;
-import io.swagger.v3.oas.annotations.tags.Tag;
-import io.swagger.v3.oas.annotations.responses.ApiResponse;
-import io.swagger.v3.oas.annotations.responses.ApiResponses;
-import io.swagger.v3.oas.annotations.Parameter;
 
 import com.sk.skala.stockapi.data.common.Response;
 import com.sk.skala.stockapi.data.dto.StockOrder;
 import com.sk.skala.stockapi.data.model.Player;
 import com.sk.skala.stockapi.service.PlayerService;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 
 @RestController
@@ -63,13 +63,13 @@ public class PlayerController {
 	}
 
 	@Operation(summary = "플레이어 주식 구매", description = "주어진 주문 정보를 기반으로 플레이어 주식을 구매합니다.")
-	@PostMapping("/buy")
+	@PostMapping("/buy_stock")
 	public Response buyPlayerStock(@RequestBody @Parameter(description = "구매할 주식 주문 정보") StockOrder order) {
 		return playerService.buyPlayerStock(order);
 	}
 
 	@Operation(summary = "플레이어 주식 판매", description = "주어진 주문 정보를 기반으로 플레이어 주식을 판매합니다.")
-	@PostMapping("/sell")
+	@PostMapping("/sell_stock")
 	public Response sellPlayerStock(@RequestBody @Parameter(description = "판매할 주식 주문 정보") StockOrder order) {
 		return playerService.sellPlayerStock(order);
 	}
